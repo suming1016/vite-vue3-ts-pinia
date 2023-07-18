@@ -50,7 +50,7 @@ export default defineConfig({
   server: {
     port: 8080, //启动端口
     open: true, //当该值为字符串时，它将被用作 URL 的路径名。
-    // host: "0.0.0.0",
+    host: "0.0.0.0",
     // hmr: {
     //   //禁用或配置 HMR 连接（用于 HMR websocket 必须使用不同的 http 服务器地址的情况）。
     //   host: "127.0.0.1",
