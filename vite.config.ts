@@ -8,12 +8,14 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { resolve } from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./",
   resolve: {
     //设置别名
     alias: {
       "@": resolve(__dirname, "src"),
       "@imgPath": resolve(__dirname, "./src/assets/images"),
       "@iconPath": resolve(__dirname, "./src/assets/icons"),
+      "@components": resolve(__dirname, "./src/components"),
     },
   },
   plugins: [
@@ -26,13 +28,17 @@ export default defineConfig({
     }),
   ],
   build: {
+    outDir: "dist", // 指定打包路径，默认为项目根目录下的 dist 目录
     minify: "terser",
     terserOptions: {
+      //对 js 进行一定的压缩，减少打包文件体积
       compress: {
-        drop_console: true,
-        drop_debugger: true,
+        keep_infinity: true, // 防止 Infinity 被压缩成 1/0，这可能会导致 Chrome 上的性能问题
+        drop_console: true, // 生产环境去除 console
+        drop_debugger: true, // 生产环境去除 debugger
       },
     },
+    chunkSizeWarningLimit: 1500, // chunk 大小警告的限制（以 kbs 为单位）默认为500
   },
   css: {
     preprocessorOptions: {

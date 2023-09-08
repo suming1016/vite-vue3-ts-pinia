@@ -8,5 +8,6 @@ const store = createPinia();
  * persist: {enabled: true,strategies: [{key: 'my_user',storage: localStorage]}
  * persist: {enabled: true,strategies: [{storage: localStorage,paths: ['name', 'age']}]}
  * */
+
 store.use(piniaPluginPersist);
 export default store;
