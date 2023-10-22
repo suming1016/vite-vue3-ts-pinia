@@ -8,8 +8,16 @@ export {}
 declare module "vue" {
   export interface GlobalComponents {
     ElConfigProvider: (typeof import("element-plus/es"))["ElConfigProvider"];
+    ElIcon: (typeof import("element-plus/es"))["ElIcon"];
+    I18n: (typeof import("./src/components/I18n.vue"))["default"];
+    Icon: (typeof import("./src/components/Icon/Icon.vue"))["default"];
+    IconEpEdit: (typeof import("~icons/ep/edit"))["default"];
+    IconEpFold: (typeof import("~icons/ep/fold"))["default"];
+    IconEpPlus: (typeof import("~icons/ep/plus"))["default"];
+    IconMaterialSymbolsActivityZoneOutline: (typeof import("~icons/material-symbols/activity-zone-outline"))["default"];
     RouterLink: (typeof import("vue-router"))["RouterLink"];
     RouterView: (typeof import("vue-router"))["RouterView"];
+    SvgIcon: (typeof import("./src/components/Icon/SvgIcon.vue"))["default"];
     UsePinia: (typeof import("./src/components/UsePinia.vue"))["default"];
   }
 }

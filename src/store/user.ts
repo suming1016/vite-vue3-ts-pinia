@@ -1,19 +1,37 @@
 import { defineStore } from "pinia";
-export const userStore = defineStore({
-  id: "user", // id必填，且需要唯一
-  state: () => {
+import { UserInfo, RoleEnum } from "@/types/user";
+interface UserState {
+  userInfo: Nullable<UserInfo>;
+  token?: string;
+  roleList: RoleEnum[];
+  sessionTimeout?: boolean;
+  lastUpdateTime: number;
+}
+
+export const useUserStore = defineStore("user", {
+  state: (): UserState => {
     return {
-      name: "张三",
+      userInfo: null,
+      token: undefined,
+      roleList: [],
+      lastUpdateTime: 0,
     };
   },
   getters: {
-    fullName: (state) => {
-      return state.name + "丰";
+    getRoleList(state): RoleEnum[] {
+      return state.roleList;
     },
   },
   actions: {
-    updateName(name: string) {
-      this.name = name;
+    setToken(info: string | undefined) {
+      this.token = info ? info : ""; // for null or undefined value
+    },
+    setRoleList(roleList: RoleEnum[]) {
+      this.roleList = roleList;
+    },
+    setUserInfo(info: UserInfo | null) {
+      this.userInfo = info;
+      this.lastUpdateTime = new Date().getTime();
     },
   },
   // 开启数据缓存
@@ -22,10 +40,10 @@ export const userStore = defineStore({
     // 自定义 key
     strategies: [
       {
-        key: "my_user",
+        key: "user",
         storage: localStorage,
         // 或者 持久化部分 state
-        paths: ["name"],
+        // paths: ["userInfo"],
       },
     ],
   },

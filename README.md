@@ -17,3 +17,25 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
    2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 # vite-vue3-ts-pinia
+vue3开发使用可参考
+- [开发文档](https://juejin.cn/post/7220220100384407610#comment)
+### 组件
+  所有组件都已经设置自动导入，可直接使用，无需`important`引入
+### Icons
+
+- [Iconify](https://iconify.design) - 使用任意的图标集，浏览：[🔍Icônes](https://icones.netlify.app/)
+使用方法：
+1、直接使用,在上述网站中选好图标，点击`Snippets`下`iconify`按钮复制
+`<span class="iconify" data-icon="material-symbols:add-notes-rounded" data-inline="false"></span>`
+或者组件使用
+`<icon-material-symbols-activity-zone-outline />`
+或者结合Element使用
+`<el-icon :size="20" :color="'#409EFC'">
+      <icon-material-symbols-activity-zone-outline />
+    </el-icon>`
+2、使用已封装组件[`Icon`]
+ `<Icon icon="material-symbols:3p-outline" size="100px" :color="'#1e80ff'"></Icon>`
+3、使用本地svg图
+`<SvgIcon name="svg01" size="100px" :color="'#1e80ff'" ></SvgIcon>`
+或者
+`<Icon icon="svg01|svg" size="100px" :color="'#1e80ff'"></Icon>`
