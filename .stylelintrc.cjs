@@ -25,7 +25,7 @@ module.exports = {
     "selector-pseudo-class-no-unknown": [
       true,
       {
-        ignorePseudoClasses: ["global", "export","v-deep", "deep"],
+        ignorePseudoClasses: ["global", "export", "v-deep", "deep"],
       },
     ],
   },

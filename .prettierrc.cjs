@@ -35,5 +35,13 @@ module.exports = {
   // 换行符使用 lf
   endOfLine: "auto",
   stylelintIntegration: true,
-  eslintIntegration: true
+  eslintIntegration: true,
+  overrides: [
+    {
+      files: "*.html",
+      options: {
+        parser: "html",
+      },
+    },
+  ],
 };

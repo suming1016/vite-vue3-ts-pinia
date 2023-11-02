@@ -4,8 +4,9 @@
   </svg>
 </template>
 <script setup lang="ts">
-import type { CSSProperties } from "vue";
 import { computed } from "vue";
+
+import type { CSSProperties } from "vue";
 const props = defineProps({
   prefix: {
     type: String,

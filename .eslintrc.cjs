@@ -8,10 +8,10 @@ module.exports = {
     "eslint:recommended",
     "plugin:vue/vue3-essential",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
     "plugin:prettier/recommended",
   ],
-  parser: "@typescript-eslint/parser",
+  plugins: ["vue", "@typescript-eslint", "simple-import-sort"],
+  parser: "vue-eslint-parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -19,14 +19,18 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    project: "tsconfig.json",
+    createDefaultProgram: false,
+    extraFileExtensions: [".vue"],
   },
-  plugins: ["vue", "@typescript-eslint"],
   /**
    * 'off' 或 0 - 关闭规则
    * 'warn' 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出),
    * 'error' 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
    */
   rules: {
+    //关闭组件命名规则
+    "vue/multi-word-component-names": "off",
     "no-console": "off",
     "no-debugger": "off",
     "max-len": ["error", { code: 140, tabWidth: 2 }],
@@ -68,7 +72,26 @@ module.exports = {
       },
     ],
     "no-unused-expressions": ["error", { allowShortCircuit: true, allowTernary: true }],
-    "import/prefer-default-export": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        groups: [
+          [`^vue$`, `^vue-router$`, `^ant-design-vue$`, `^echarts$`], // 你可以根据需要添加更多的内置模块
+          [`.*\\.vue$`], // .vue 文件
+          [`.*/assets/.*`, `^@/assets$`],
+          [`.*/config/.*`, `^@/config$`],
+          [`.*/hooks/.*`, `^@/hooks$`],
+          [`.*/plugins/.*`, `^@/plugins$`],
+          [`.*/router/.*`, `^@/router$`],
+          [`^@/services$`, `^@/services/.*`],
+          [`.*/store/.*`, `^@/store$`],
+          [`.*/utils/.*`, `^@/utils$`],
+          [`^`],
+          [`^type `],
+        ],
+      },
+    ],
+    "simple-import-sort/exports": "error",
     /**
      * 【强制】关键字前后有一个空格
      * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/keyword-spacing.md

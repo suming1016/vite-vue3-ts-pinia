@@ -36,6 +36,10 @@
     "build/**/*.ts",
     "build/**/*.d.ts",
     "mock/**/*.ts",
+    ".*.cjs",
+    "*.d.ts",
+    "index.html",
+    "*.config.cjs",
     "vite.config.ts"
   ],
   "exclude": ["node_modules", "dist", "**/*.cjs"],

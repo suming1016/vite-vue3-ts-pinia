@@ -5,8 +5,10 @@
 </template>
 <script setup lang="ts">
 import { unref } from "vue";
-import { i18n } from "./locales";
+
 import { useLocaleStore } from "@/store/locale";
+
+import { i18n } from "./locales";
 const localInfo = useLocaleStore();
 
 const getLocale = localInfo.localInfo.locale;
